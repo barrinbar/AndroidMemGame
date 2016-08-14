@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.inbar.memgame.Loby">
+    tools:context="com.example.inbar.memgame.Loby"
+    android:background="#323232">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -27,7 +28,8 @@
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:text="@string/please_enter_your_name"
             android:id="@+id/tv_enter_name"
-            android:paddingTop="10dp" />
+            android:paddingTop="10dp"
+            android:textColor="#ffffff" />
 
         <EditText
             android:layout_width="match_parent"
@@ -37,14 +39,16 @@
             android:ems="10"
             android:id="@+id/et_name"
             android:hint="@string/who_are_you"
-            android:selectAllOnFocus="true" />
+            android:selectAllOnFocus="true"
+            android:textColor="#ffffff" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:text="@string/please_select_a_level"
-            android:id="@+id/tv_select_level" />
+            android:id="@+id/tv_select_level"
+            android:textColor="#ffffff" />
 
         <Button
             android:layout_width="fill_parent"

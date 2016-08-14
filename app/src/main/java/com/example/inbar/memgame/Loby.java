@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 public class Loby extends AppCompatActivity {
 
+    private EditText et_name = (EditText)findViewById(R.id.et_name);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +37,8 @@ public class Loby extends AppCompatActivity {
 
         // Disable buttons
         Button btn_lvl_1 = (Button)findViewById(R.id.btn_lvl_1);
-        Button btn_lvl_2 = (Button)findViewById(R.id.btn_lvl_1);
-        Button btn_lvl_3 = (Button)findViewById(R.id.btn_lvl_1);
+        Button btn_lvl_2 = (Button)findViewById(R.id.btn_lvl_2);
+        Button btn_lvl_3 = (Button)findViewById(R.id.btn_lvl_3);
 
         btn_lvl_1.setEnabled(false);
         btn_lvl_2.setEnabled(false);
@@ -44,7 +46,6 @@ public class Loby extends AppCompatActivity {
     }
 
     private void checkNameFill() {
-        EditText et_name = (EditText)findViewById(R.id.et_name);
         et_name.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int before, int count) {
@@ -53,7 +54,7 @@ public class Loby extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() >= 3)
+                if (et_name.getText().length() >= 3)
                     showLevels();
                 else
                     hideLevels();
@@ -73,8 +74,8 @@ public class Loby extends AppCompatActivity {
 
         // Enable buttons
         Button btn_lvl_1 = (Button)findViewById(R.id.btn_lvl_1);
-        Button btn_lvl_2 = (Button)findViewById(R.id.btn_lvl_1);
-        Button btn_lvl_3 = (Button)findViewById(R.id.btn_lvl_1);
+        Button btn_lvl_2 = (Button)findViewById(R.id.btn_lvl_2);
+        Button btn_lvl_3 = (Button)findViewById(R.id.btn_lvl_3);
 
         btn_lvl_1.setEnabled(true);
         btn_lvl_2.setEnabled(true);

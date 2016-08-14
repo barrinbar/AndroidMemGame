@@ -1,13 +1,11 @@
 <resources>
-    <string name="app_name">MemGame</string>
+    <string name="app_name">RememberMe</string>
     <string name="name">Name</string>
     <string name="level_1">Level 1</string>
     <string name="level_2">Level 2</string>
     <string name="level_3">Level 3</string>
-    <string name="the_mem_game">The Mem Game</string>
     <string name="please_select_a_level">Please Select a Level</string>
     <string name="who_are_you">Who are you?</string>
-    <string name="remeber_me">Remeber Me!</string>
     <string name="please_enter_your_name">Please Enter Your Name</string>
     <string name="remember_me">Remember Me!</string>
 </resources>
