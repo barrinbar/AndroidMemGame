@@ -43,7 +43,7 @@ public class Loby extends AppCompatActivity {
         btn_lvl_3.setEnabled(false);
     }
 
-    private boolean checkNameFill() {
+    private void checkNameFill() {
         EditText et_name = (EditText)findViewById(R.id.et_name);
         et_name.addTextChangedListener(new TextWatcher() {
             @Override
