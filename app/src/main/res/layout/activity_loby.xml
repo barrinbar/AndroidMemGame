@@ -18,14 +18,15 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/logo"
-            android:contentDescription="@string/remember_me" />
+            android:contentDescription="@string/remember_me"
+            android:id="@+id/iv_remember_me" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:text="@string/please_enter_your_name"
-            android:id="@+id/textView"
+            android:id="@+id/tv_enter_name"
             android:paddingTop="10dp" />
 
         <EditText
@@ -34,7 +35,7 @@
             android:inputType="textPersonName"
             android:text="@string/name"
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/et_name"
             android:hint="@string/who_are_you"
             android:selectAllOnFocus="true" />
 
@@ -43,25 +44,25 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:text="@string/please_select_a_level"
-            android:id="@+id/textView2" />
+            android:id="@+id/tv_select_level" />
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/level_1"
-            android:id="@+id/button" />
+            android:id="@+id/btn_lvl_1" />
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/level_2"
-            android:id="@+id/button2" />
+            android:id="@+id/btn_lvl_2" />
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/level_3"
-            android:id="@+id/button3" />
+            android:id="@+id/btn_lvl_3" />
 
     </LinearLayout>
 
