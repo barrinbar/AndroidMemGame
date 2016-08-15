@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:layout_weight="1"
+    tools:context=".lobby"
+    android:background="#323232">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"
+            android:contentDescription="@string/remember_me"
+            android:paddingTop="30dp"
+            android:id="@+id/iv_remember_me" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:text="@string/please_enter_your_name"
+                android:id="@+id/tv_enter_name"
+                android:textAlignment="center"
+                android:textColor="#ffffff" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text="@string/name"
+                android:ems="10"
+                android:id="@+id/et_name"
+                android:hint="@string/who_are_you"
+                android:selectAllOnFocus="true"
+                android:textAlignment="center"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_level_select"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:text="@string/please_select_a_level"
+                android:textAlignment="center"
+                android:id="@+id/tv_select_level"
+                android:textColor="#ffffff"
+                android:visibility="invisible" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/level_1"
+                android:id="@+id/btn_lvl_1"
+                android:backgroundTint="@color/colorEasyLevel"
+                android:enabled="false"
+                android:onClick="dispLevel1" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/level_2"
+                android:id="@+id/btn_lvl_2"
+                android:backgroundTint="@color/colorMidLevel"
+                android:enabled="false"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/level_3"
+                android:id="@+id/btn_lvl_3"
+                android:backgroundTint="@color/colorHardLevel"
+                android:enabled="false"
+                />
+        </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="10dp">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_hi_score"
+            android:text="@string/hi_score"
+            android:onClick="dispHiScore" />
+    </LinearLayout>
+
+</LinearLayout>
