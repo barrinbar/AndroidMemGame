@@ -17,10 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".level1" />
-        <activity
-            android:name=".hi_score"
-            android:label="@string/title_activity_hi_score"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
