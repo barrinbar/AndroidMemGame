@@ -4,13 +4,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo"
-        android:logo="@drawable/logo"
+        android:icon="@drawable/icon"
+        android:logo="@drawable/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".lobby"
-            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen">
+        <activity android:name=".lobby">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

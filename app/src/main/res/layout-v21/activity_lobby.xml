@@ -71,7 +71,7 @@
                 android:id="@+id/btn_lvl_1"
                 android:backgroundTint="@color/colorEasyLevel"
                 android:enabled="false"
-                android:onClick="dispLevel1" />
+                android:onClick="dispLevel" />
 
             <Button
                 android:layout_width="match_parent"

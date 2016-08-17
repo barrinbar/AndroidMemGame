@@ -1,6 +1,8 @@
 package com.example.inbar.memgame;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -13,7 +15,7 @@ import android.widget.Toast;
 
 public class lobby extends AppCompatActivity {
 
-    private EditText et_name = (EditText) findViewById(R.id.et_name);
+    private EditText et_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +26,8 @@ public class lobby extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
+        et_name = (EditText) findViewById(R.id.et_name);
         hideLevels();
-
         checkNameFill();
 
         // Load current state?
@@ -93,17 +94,45 @@ public class lobby extends AppCompatActivity {
 */
     }
 
-    public void dispLevel1(View view) {
+    public void dispLevel(View view) {
 
         // Make sure name is filled
         if (et_name.getText().length() < 3)
             et_name.setError( "First name is required!" );
         else {
-            Toast.makeText(lobby.this, "The id is: " + view.getId(), Toast.LENGTH_SHORT).show();
+            Intent showLevel;
+            Button btnLevel = (Button)view;
 
-            Intent startLevel = new Intent(this,level1.class);
-            startLevel.putExtra("USER_NAME",et_name.getText().toString());
-//            startActivity(startLevel);
+            switch (btnLevel.getText().charAt(btnLevel.getText().length()-1)) {
+                case('1'): {
+                    showLevel = new Intent(this, level1.class);
+                    break;
+                }
+                /*case('2'): {
+                    showLevel = new Intent(this, level2.class);
+                    break;
+                }
+                case('3'): {
+                    showLevel = new Intent(this, level3.class);
+                    break;
+                }*/
+                default: {
+                    Toast.makeText(lobby.this, "Text: " + btnLevel.getText().toString() + "\nChar: " +
+                            btnLevel.getText().charAt(btnLevel.getText().length()-1), Toast.LENGTH_LONG).show();
+                    showLevel = null;
+                    break;
+                }
+            }
+
+            if (showLevel != null) {
+                //showLevel.putExtra("USER_NAME", et_name.getText().toString().trim());
+                SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString(getString(R.string.saved_user_name), et_name.getText().toString().trim());
+                editor.apply();
+
+                startActivity(showLevel);
+            }
         }
     }
 

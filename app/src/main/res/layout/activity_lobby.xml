@@ -39,7 +39,6 @@
                 android:text="@string/name"
                 android:id="@+id/et_name"
                 android:hint="@string/who_are_you"
-                android:selectAllOnFocus="true"
                 android:textAlignment="center"
                 android:textColor="#ffffff" />
         </LinearLayout>
@@ -68,7 +67,7 @@
                 android:id="@+id/btn_lvl_1"
                 android:backgroundTint="@color/colorEasyLevel"
                 android:enabled="false"
-                android:onClick="dispLevel1" />
+                android:onClick="dispLevel" />
 
             <Button
                 android:layout_width="match_parent"
