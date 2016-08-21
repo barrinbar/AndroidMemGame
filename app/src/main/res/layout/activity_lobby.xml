@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/please_enter_your_name"
                 android:id="@+id/tv_enter_name"
-                android:textAlignment="center"
+                android:gravity="center"
                 android:textColor="#ffffff" />
 
             <EditText
@@ -39,7 +39,7 @@
                 android:text="@string/name"
                 android:id="@+id/et_name"
                 android:hint="@string/who_are_you"
-                android:textAlignment="center"
+                android:gravity="center"
                 android:textColor="#ffffff" />
         </LinearLayout>
 
@@ -55,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/please_select_a_level"
-                android:textAlignment="center"
+                android:gravity="center"
                 android:id="@+id/tv_select_level"
                 android:textColor="#ffffff"
                 android:visibility="invisible" />
