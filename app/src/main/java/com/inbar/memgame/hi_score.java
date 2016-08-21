@@ -6,17 +6,13 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.inbar.memgame.R;
 import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
@@ -48,7 +44,6 @@ public class hi_score extends AppCompatActivity {
         {
             // Make sure key and value not empty
             if ((entry.getKey() != null) && (entry.getValue() != null)) {
-                Log.d("MemGame:HISCORE", "Key: " + entry.getKey() + "Value: " + entry.getValue());
                 TableRow currUser = new TableRow(this);
                 TextView userName = new TextView(this);
                 TextView level = new TextView(this);
@@ -118,24 +113,4 @@ public class hi_score extends AppCompatActivity {
         Intent lobby = new Intent(this, lobby.class);
         startActivity(lobby);
     }
-    /*public static <K, V extends Comparable<? super V>> Map<K, V>
-    sortByValue( Map<K, V> map )
-    {
-        LinkedList<Map.Entry<K, V>> list =
-                new LinkedList<>( map.entrySet() );
-        Collections.sort( list, new Comparator<Map.Entry<K, V>>()
-        {
-            public int compare( Map.Entry<K, V> o1, Map.Entry<K, V> o2 )
-            {
-                return ( o1.getValue() ).compareTo( o2.getValue() );
-            }
-        } );
-
-        Map<K, V> result = new LinkedHashMap<>();
-        for (Map.Entry<K, V> entry : list)
-        {
-            result.put( entry.getKey(), entry.getValue() );
-        }
-        return result;
-    }*/
 }

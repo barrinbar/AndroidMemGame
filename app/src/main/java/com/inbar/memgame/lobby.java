@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.inbar.memgame.R;
+import com.inbar.memgame.R;
 
 public class lobby extends AppCompatActivity {
 
