@@ -1,4 +1,4 @@
-package com.example.inbar.memgame;
+package com.inbar.memgame;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

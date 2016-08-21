@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_centerHorizontal="true"
     android:layout_weight="1"
-    tools:context=".lobby"
+    tools:context="com.inbar.memgame.lobby"
     android:background="#323232">
 
         <ImageView

@@ -1,4 +1,4 @@
-package com.example.inbar.memgame;
+package com.inbar.memgame;
 
 import org.junit.Test;
 

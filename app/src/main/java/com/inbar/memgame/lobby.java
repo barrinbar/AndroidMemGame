@@ -1,4 +1,4 @@
-package com.example.inbar.memgame;
+package com.inbar.memgame;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.inbar.memgame.R;
 
 public class lobby extends AppCompatActivity {
 
@@ -87,11 +89,9 @@ public class lobby extends AppCompatActivity {
 
     public void dispHiScore(View view) {
 
-        // TODO:go to high score page
-        /*Intent goToScore = new Intent(this,High_score.class);
-        goToScore.putExtra("STATE","fromMenu");
-        startActivity(goToScore);
-*/
+        // Go to high score page
+        Intent goToHiScore = new Intent(this,hi_score.class);
+        startActivity(goToHiScore);
     }
 
     public void dispLevel(View view) {
@@ -117,19 +117,17 @@ public class lobby extends AppCompatActivity {
                     break;
                 }*/
                 default: {
-                    Toast.makeText(lobby.this, "Text: " + btnLevel.getText().toString() + "\nChar: " +
-                            btnLevel.getText().charAt(btnLevel.getText().length()-1), Toast.LENGTH_LONG).show();
                     showLevel = null;
                     break;
                 }
             }
 
             if (showLevel != null) {
-                //showLevel.putExtra("USER_NAME", et_name.getText().toString().trim());
-                SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.user_name_pref), Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString(getString(R.string.saved_user_name), et_name.getText().toString().trim());
-                editor.apply();
+                editor.putString(getString(R.string.user_name_pref), et_name.getText().toString().trim());
+                Log.d("MemGame:LOBBY", "User name: " + et_name.getText().toString().trim());
+                editor.commit();
 
                 startActivity(showLevel);
             }
