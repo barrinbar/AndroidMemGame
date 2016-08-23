@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
+import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -103,31 +104,29 @@ public abstract class level extends AppCompatActivity {
         GridView board = (GridView)findViewById(R.id.board);
 
         board.setNumColumns(getColumns());
-
         board.setAdapter(new ImageAdapter(getLevelContext()));
-
         board.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
 
-                // Make sure card isn't already matched
-                if (getCards().get(v.getId()) == MATCHED)
-                    return;
+            // Make sure card isn't already matched
+            if (getCards().get(v.getId()) == MATCHED)
+                return;
 
-                numOfFlips++;
+            numOfFlips++;
 
-                // If it's a first flip
-                if (firstCard == null) {
+            // If it's a first flip
+            if (firstCard == null) {
 
-                    // Get first card and flip it
-                    firstCard = (ImageView)v;
-                    firstCard.setImageResource((int)firstCard.getTag());
-                }
-                else { // Second flip
-                    secondCard = (ImageView)v;
+                // Get first card and flip it
+                firstCard = (ImageView)v;
+                firstCard.setImageResource((int)firstCard.getTag());
+            }
+            else { // Second flip
+                secondCard = (ImageView)v;
 
-                    checkMatch();
-                }
+                checkMatch();
+            }
             }
         });
     }
@@ -244,21 +243,42 @@ public abstract class level extends AppCompatActivity {
 
         // Create a new ImageView for each item referenced by the Adapter
         public View getView(int position, View convertView, ViewGroup parent) {
-            ImageView imageView;
+            SquareImageView imageView;
             if (convertView == null) {
-                // if it's not recycled, initialize some attributes
-                imageView = new ImageView(mContext);
-                imageView.setLayoutParams(new GridView.LayoutParams(200, 200));
+                // If it's not recycled, initialize some attributes
+                imageView = new SquareImageView(mContext);
+                imageView.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                //imageView.setLayoutParams(new GridView.LayoutParams(200, 200));
                 imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                imageView.setPadding(8, 8, 8, 8);
+                //imageView.setPadding(8, 8, 8, 8);
             } else {
-                imageView = (ImageView) convertView;
+                imageView = (SquareImageView) convertView;
             }
 
             imageView.setImageResource(R.drawable.square);
             imageView.setTag(getCards().get(position));
             imageView.setId(position);
             return imageView;
+        }
+
+        public class SquareImageView extends ImageView {
+            public SquareImageView(Context context) {
+                super(context);
+            }
+
+            public SquareImageView(Context context, AttributeSet attrs) {
+                super(context, attrs);
+            }
+
+            public SquareImageView(Context context, AttributeSet attrs, int defStyle) {
+                super(context, attrs, defStyle);
+            }
+
+            @Override
+            protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+                super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+                setMeasuredDimension(getMeasuredWidth(), getMeasuredWidth()); //Snap to width
+            }
         }
     }
 

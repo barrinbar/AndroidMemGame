@@ -27,9 +27,9 @@
 
         <GridView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:verticalSpacing="10dp"
-            android:horizontalSpacing="10dp"
+            android:layout_height="match_parent"
+            android:verticalSpacing="8dp"
+            android:horizontalSpacing="8dp"
             android:stretchMode="columnWidth"
             android:gravity="center"
             android:layout_gravity="center_vertical"

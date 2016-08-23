@@ -114,10 +114,10 @@ public class lobby extends AppCompatActivity {
                     Log.d("MEMGAME:lobby", "Set intent level2");
                     break;
                 }
-                /*case('3'): {
+                case('3'): {
                     showLevel = new Intent(this, level3.class);
                     break;
-                }*/
+                }
                 default: {
                     showLevel = null;
                     break;
