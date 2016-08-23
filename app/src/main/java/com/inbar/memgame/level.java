@@ -37,13 +37,14 @@ public abstract class level extends AppCompatActivity {
     private Context levelContext;
     private int level;
     private int totalCards;
+    private int columns;
     private ArrayList<Integer> cards;
 
     public Context getLevelContext() {
         return levelContext;
     }
 
-    public void setLevelContext(Context levelContext) {
+    protected void setLevelContext(Context levelContext) {
         this.levelContext = levelContext;
     }
 
@@ -51,7 +52,7 @@ public abstract class level extends AppCompatActivity {
         return level;
     }
 
-    public void setLevel(int level) {
+    protected void setLevel(int level) {
         this.level = level;
     }
 
@@ -59,7 +60,7 @@ public abstract class level extends AppCompatActivity {
         return totalCards;
     }
 
-    public void setTotalCards(int totalCards) {
+    protected void setTotalCards(int totalCards) {
         this.totalCards = totalCards;
     }
 
@@ -67,8 +68,16 @@ public abstract class level extends AppCompatActivity {
         return cards;
     }
 
-    public void setCards(ArrayList<Integer> cards) {
+    protected void setCards(ArrayList<Integer> cards) {
         this.cards = cards;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
+
+    protected void setColumns(int columns) {
+        this.columns = columns;
     }
 
     protected abstract void initCards();
@@ -92,6 +101,8 @@ public abstract class level extends AppCompatActivity {
         Collections.shuffle(cards);
 
         GridView board = (GridView)findViewById(R.id.board);
+
+        board.setNumColumns(getColumns());
 
         board.setAdapter(new ImageAdapter(getLevelContext()));
 
@@ -191,12 +202,16 @@ public abstract class level extends AppCompatActivity {
 
         // Check if the user already exists in the high scores
         if (sharedPref.contains(name)) {
+
+            // Get the current high score for comparison
             json = sharedPref.getString(name, "");
             hs = gson.fromJson(json, HighScore.class);
 
             // Check if the existing better thn the current time
-            if (hs.getTime() > elapsedTime)
+            if ((hs.getLevel() == getLevel()) && (hs.getTime() > elapsedTime))
                 hs.setTime(elapsedTime);
+
+            hs.setLevel(getLevel());
         }
         // User's first high score
         else

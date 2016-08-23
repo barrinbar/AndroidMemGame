@@ -13,8 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.inbar.memgame.R;
-
 public class lobby extends AppCompatActivity {
 
     private EditText et_name;
@@ -103,16 +101,20 @@ public class lobby extends AppCompatActivity {
             Intent showLevel;
             Button btnLevel = (Button)view;
 
+            Log.d("MEMGAME:lobby", "Button pressed: " + btnLevel.getText().toString().trim());
+            Log.d("MEMGAME:lobby", "Last Char: " + btnLevel.getText().charAt(btnLevel.getText().length()-1));
             switch (btnLevel.getText().charAt(btnLevel.getText().length()-1)) {
                 case('1'): {
                     showLevel = new Intent(this, level1.class);
+                    Log.d("MEMGAME:lobby", "Set intent level1");
                     break;
                 }
-                /*case('2'): {
+                case('2'): {
                     showLevel = new Intent(this, level2.class);
+                    Log.d("MEMGAME:lobby", "Set intent level2");
                     break;
                 }
-                case('3'): {
+                /*case('3'): {
                     showLevel = new Intent(this, level3.class);
                     break;
                 }*/
@@ -126,7 +128,6 @@ public class lobby extends AppCompatActivity {
                 SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.user_name_pref), Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString(getString(R.string.user_name_pref), et_name.getText().toString().trim());
-                Log.d("MemGame:LOBBY", "User name: " + et_name.getText().toString().trim());
                 editor.commit();
 
                 startActivity(showLevel);

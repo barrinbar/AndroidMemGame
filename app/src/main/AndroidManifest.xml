@@ -9,15 +9,16 @@
         android:logo="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.inbar.memgame.lobby">
+        <activity android:name=".lobby">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.inbar.memgame.level1" />
-        <activity android:name="com.inbar.memgame.hi_score" />
+        <activity android:name=".level1" />
+        <activity android:name=".level2" />
+        <activity android:name=".hi_score" />
     </application>
 
 </manifest>

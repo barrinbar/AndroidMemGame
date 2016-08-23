@@ -80,7 +80,7 @@
                 android:id="@+id/btn_lvl_2"
                 android:backgroundTint="@color/colorMidLevel"
                 android:enabled="false"
-                />
+                android:onClick="dispLevel" />
 
             <Button
                 android:layout_width="match_parent"
@@ -89,7 +89,7 @@
                 android:id="@+id/btn_lvl_3"
                 android:backgroundTint="@color/colorHardLevel"
                 android:enabled="false"
-                />
+                android:onClick="dispLevel" />
         </LinearLayout>
 
     <LinearLayout

@@ -11,17 +11,17 @@ import java.util.Arrays;
  */
 public class level1 extends level {
 
-
     public level1() {
         setLevel(1);
         setTotalCards(4);
+        setColumns(2);
         setLevelContext(this);
     }
 
     protected void initCards() {
         setCards(new ArrayList<>(Arrays.asList(
-                R.drawable.begin, R.drawable.ben_gurion,
-                R.drawable.begin, R.drawable.ben_gurion)));
+                R.drawable.card01, R.drawable.card02,
+                R.drawable.card01, R.drawable.card02)));
     }
 
     @Override
