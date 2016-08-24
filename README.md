@@ -8,9 +8,9 @@ The well known memory game - simply flip cards and try to match them as quickly 
 ![Remember Me](app/src/main/res/drawable/logo.png?raw=true "Logo")
 ## Installation
 
-Install using the <APK>
+Install using the [apk](https://github.com/barrinbar/AndroidMemGame/raw/master/release/RememberMe!.apk "apk")
 
-Run using Android API 15 or higher (Android 4.0.3, 4.0.4	15	Ice Cream Sandwich MR1).
+Run on Android API 15 or higher (Android 4.0.3, 4.0.4	15 Ice Cream Sandwich MR1).
 
 ## Built With
 
