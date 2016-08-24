@@ -1,4 +1,4 @@
-# AndroidMemGame
+# Remember Me!
 A memory game app project in Cellular Apps Course @ Afeka College
 
 Practices building a basic android application
@@ -22,4 +22,4 @@ Barr Inbar – [@barrinbar](https://twitter.com/barrinbar)
 
 Distributed under the MIT license. See [LICENSE.md](LICENSE.md) for more information.
 
-[https://github.com/barrinbar/AndroidMemGame](https://github.com/barrinbar/)
+[https://github.com/barrinbar/](https://github.com/barrinbar/)
