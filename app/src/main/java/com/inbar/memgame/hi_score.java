@@ -79,38 +79,37 @@ public class hi_score extends AppCompatActivity {
                         TableRow.LayoutParams.MATCH_PARENT,
                         TableRow.LayoutParams.WRAP_CONTENT,
                         1f));
-                currUser.setHorizontalGravity(Gravity.CENTER_HORIZONTAL);
+                currUser.setGravity(Gravity.CENTER_HORIZONTAL);
                 scoresList.addView(currUser);
             }
         }
     }
 
-    public static <String, V extends Comparable<? super V>> Map<String, V>
-    sortHSByValue( Map<String, String> map ) {
+    public static <K, V extends Comparable<? super V>> Map<K, V>
+    sortHSByValue( Map<K, K> map ) {
         HighScore hs;
         Gson gson = new Gson();
         java.lang.String json;
 
-        HashMap<String, V> hm =
+        HashMap<K, V> hm =
                 new HashMap<>();
 
-        for (Map.Entry<String, String> entry : map.entrySet()) {
+        for (Map.Entry<K, K> entry : map.entrySet()) {
             json = (java.lang.String)entry.getValue();
             hs = gson.fromJson(json, HighScore.class);
             hm.put(entry.getKey(), (V) hs);
         }
 
-        LinkedList<Map.Entry<String, V>> list =
-                new LinkedList<>( hm.entrySet() );
+        LinkedList<Map.Entry<K, V>> list = new LinkedList<>( hm.entrySet() );
 
-        Collections.sort(list, new Comparator<Map.Entry<String, V>>() {
-            public int compare(Map.Entry<String, V> o1, Map.Entry<String, V> o2) {
+        Collections.sort(list, new Comparator<Map.Entry<K, V>>() {
+            public int compare(Map.Entry<K, V> o1, Map.Entry<K, V> o2) {
                 return (o1.getValue()).compareTo(o2.getValue());
             }
         });
 
-        Map<String, V> result = new LinkedHashMap<>();
-        for (Map.Entry<String, V> entry : hm.entrySet()) {
+        Map<K, V> result = new LinkedHashMap<>();
+        for (Map.Entry<K, V> entry : list) {
             result.put(entry.getKey(), entry.getValue());
         }
         return result;
