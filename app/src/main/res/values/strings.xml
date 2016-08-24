@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Remember Me</string>
-    <string name="name">Name</string>
     <string name="level_1">Level 1</string>
     <string name="level_2">Level 2</string>
     <string name="level_3">Level 3</string>
@@ -13,4 +12,5 @@
     <string name="high_score_pref">HIGH_SCORES</string>
     <string name="high_scores">High Scores</string>
     <string name="home">Home</string>
+    <string name="clear_high_scores">Clear High Scores</string>
 </resources>

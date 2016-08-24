@@ -12,6 +12,7 @@ import android.view.Window;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -27,13 +28,19 @@ import java.util.Map;
 
 public class hi_score extends AppCompatActivity {
 
+    TableLayout scoresList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_hi_score);
+        scoresList = (TableLayout)findViewById(R.id.tl_hi_scores);
 
-        TableLayout scoresList = (TableLayout)findViewById(R.id.tl_hi_scores);
+        buildHSList();
+    }
+
+    private void buildHSList() {
 
         // Retrieve high scores from shared prefs
         SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.high_score_pref), Context.MODE_PRIVATE);
@@ -111,6 +118,16 @@ public class hi_score extends AppCompatActivity {
 
     public void returnHome(View view) {
         Intent lobby = new Intent(this, lobby.class);
+        lobby.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        lobby.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        lobby.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(lobby);
+    }
+
+    public void clearHS(View view) {
+        SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.high_score_pref), Context.MODE_PRIVATE);
+        sharedPref.edit().clear().commit();
+        scoresList.removeAllViews();
+        Toast.makeText(this, "High Scores cleared", Toast.LENGTH_SHORT).show();
     }
 }

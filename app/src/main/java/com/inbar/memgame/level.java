@@ -27,10 +27,12 @@ import java.util.Collections;
 public abstract class level extends AppCompatActivity {
 
     private final static int MATCHED = -1;
-    private static int numOfMatches = 0;
-    private static int numOfFlips = 0;
-    private static ImageView firstCard = null;
-    private static ImageView secondCard = null;
+    private int numOfMatches = 0;
+    private int numOfFlips = 0;
+    private boolean started = false;
+    private ImageView firstCard = null;
+    private ImageView secondCard = null;
+    private String newHighScore = "";
 
     private Chronometer currTime;
     private TextView userName;
@@ -113,6 +115,13 @@ public abstract class level extends AppCompatActivity {
             if (getCards().get(v.getId()) == MATCHED)
                 return;
 
+            // If timer isn't started - start it
+            if (!started) {
+                currTime.setBase(SystemClock.elapsedRealtime());
+                currTime.start();
+                started = true;
+            }
+
             numOfFlips++;
 
             // If it's a first flip
@@ -178,13 +187,18 @@ public abstract class level extends AppCompatActivity {
     private void gameState() {
         if (numOfMatches * 2 == getTotalCards()) {
             currTime.stop();
-            Toast.makeText(getLevelContext(), "Congratulations!!! You Won!!!\n" +
-                    "You needed only " + numOfFlips + " flips and " +
-                    currTime.getText().toString().trim() + " minutes", Toast.LENGTH_LONG).show();
 
             setHighScore();
 
+            Toast.makeText(getLevelContext(), "Congratulations!!! You Won!!!\n" +
+                    "You needed only " + numOfFlips + " flips and " +
+                    currTime.getText().toString().trim() + " minutes" + newHighScore, Toast.LENGTH_LONG).show();
+
+
             Intent lobby = new Intent(getLevelContext(), lobby.class);
+            lobby.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            lobby.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            lobby.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(lobby);
         }
     }
@@ -199,22 +213,24 @@ public abstract class level extends AppCompatActivity {
         String name = userName.getText().toString().trim();
         long elapsedTime = SystemClock.elapsedRealtime() - currTime.getBase();
 
-        // Check if the user already exists in the high scores
-        if (sharedPref.contains(name)) {
+        newHighScore = "\nAnd set a new High Score!!";
 
+        if (!sharedPref.contains(name))
+            hs = new HighScore(getLevel(), elapsedTime);
+        else
+        {
             // Get the current high score for comparison
             json = sharedPref.getString(name, "");
             hs = gson.fromJson(json, HighScore.class);
 
-            // Check if the existing better thn the current time
-            if ((hs.getLevel() == getLevel()) && (hs.getTime() > elapsedTime))
+            if ((hs.getLevel() < getLevel()) ||
+                    ((hs.getLevel() == getLevel()) && (hs.getTime() > elapsedTime))) {
                 hs.setTime(elapsedTime);
-
-            hs.setLevel(getLevel());
+                hs.setLevel(getLevel());
+            }
+            else
+                newHighScore = "";
         }
-        // User's first high score
-        else
-            hs = new HighScore(getLevel(), elapsedTime);
 
         Editor prefsEditor = sharedPref.edit();
         json = gson.toJson(hs);
@@ -222,6 +238,17 @@ public abstract class level extends AppCompatActivity {
         prefsEditor.commit();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        numOfMatches = 0;
+        numOfFlips = 0;
+    }
+
+    /**
+     * Image Adapter
+     * An adapter for displaying the cards in a grid view
+     */
     public class ImageAdapter extends BaseAdapter {
         private Context mContext;
 
@@ -248,9 +275,7 @@ public abstract class level extends AppCompatActivity {
                 // If it's not recycled, initialize some attributes
                 imageView = new SquareImageView(mContext);
                 imageView.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                //imageView.setLayoutParams(new GridView.LayoutParams(200, 200));
                 imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                //imageView.setPadding(8, 8, 8, 8);
             } else {
                 imageView = (SquareImageView) convertView;
             }
@@ -261,6 +286,10 @@ public abstract class level extends AppCompatActivity {
             return imageView;
         }
 
+        /**
+         * Square Image View
+         * An image view which is defined as a square according to the view's width
+         */
         public class SquareImageView extends ImageView {
             public SquareImageView(Context context) {
                 super(context);
@@ -280,14 +309,5 @@ public abstract class level extends AppCompatActivity {
                 setMeasuredDimension(getMeasuredWidth(), getMeasuredWidth()); //Snap to width
             }
         }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        numOfMatches = 0;
-        numOfFlips = 0;
-        currTime.setBase(SystemClock.elapsedRealtime());
-        currTime.start();
     }
 }

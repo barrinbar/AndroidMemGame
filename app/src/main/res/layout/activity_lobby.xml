@@ -6,15 +6,14 @@
     android:layout_height="match_parent"
     android:layout_centerHorizontal="true"
     android:layout_weight="1"
-    tools:context="com.inbar.memgame.lobby"
-    android:background="#323232">
+    tools:context="com.inbar.memgame.lobby" >
 
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/logo"
             android:contentDescription="@string/remember_me"
-            android:paddingTop="30dp"
+            android:paddingTop="20dp"
             android:id="@+id/iv_remember_me" />
 
         <LinearLayout
@@ -22,7 +21,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:paddingTop="20dp">
+            android:paddingTop="15dp">
 
             <TextView
                 android:layout_width="fill_parent"
@@ -36,9 +35,10 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="@string/name"
+                android:text=""
                 android:id="@+id/et_name"
                 android:hint="@string/who_are_you"
+                android:textColorHint="@android:color/white"
                 android:gravity="center"
                 android:textColor="#ffffff" />
         </LinearLayout>
@@ -58,24 +58,28 @@
                 android:gravity="center"
                 android:id="@+id/tv_select_level"
                 android:textColor="#ffffff"
-                android:visibility="invisible" />
+                android:visibility="invisible"
+                />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/level_1"
                 android:id="@+id/btn_lvl_1"
-                android:backgroundTint="@color/colorEasyLevel"
+                android:background="@drawable/level1button"
                 android:enabled="false"
-                android:onClick="dispLevel" />
+                android:paddingTop="5dp"
+                android:onClick="dispLevel"
+                />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/level_2"
                 android:id="@+id/btn_lvl_2"
-                android:backgroundTint="@color/colorMidLevel"
+                android:background="@drawable/level2button"
                 android:enabled="false"
+                android:paddingTop="5dp"
                 android:onClick="dispLevel" />
 
             <Button
@@ -83,8 +87,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/level_3"
                 android:id="@+id/btn_lvl_3"
-                android:backgroundTint="@color/colorHardLevel"
+                android:background="@drawable/level3button"
                 android:enabled="false"
+                android:paddingTop="5dp"
                 android:onClick="dispLevel" />
         </LinearLayout>
 
@@ -99,7 +104,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn_hi_score"
             android:text="@string/hi_score"
-            android:onClick="dispHiScore" />
+            android:onClick="dispHiScore"
+            android:background="@drawable/defaultbutton"/>
     </LinearLayout>
 
 </LinearLayout>

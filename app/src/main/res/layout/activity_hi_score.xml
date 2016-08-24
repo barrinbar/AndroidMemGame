@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_centerHorizontal="true"
     tools:context="com.inbar.memgame.hi_score"
-    android:background="#323232">
+    >
 
     <TextView
         android:layout_width="fill_parent"
@@ -38,15 +38,27 @@
 
         </TableLayout>
     </ScrollView>
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/home"
-        android:id="@+id/btn_home"
+        android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:onClick="returnHome" />
-
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home"
+            android:id="@+id/btn_home"
+            android:onClick="returnHome"
+            android:background="@drawable/defaultbutton"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_high_scores"
+            android:id="@+id/btn_clear"
+            android:onClick="clearHS"
+            android:background="@drawable/defaultbutton"/>
+    </LinearLayout>
 </RelativeLayout>
