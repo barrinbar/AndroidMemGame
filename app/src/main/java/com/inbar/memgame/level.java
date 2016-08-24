@@ -193,8 +193,7 @@ public abstract class level extends AppCompatActivity {
             Toast.makeText(getLevelContext(), "Congratulations!!! You Won!!!\n" +
                     "You needed only " + numOfFlips + " flips and " +
                     currTime.getText().toString().trim() + " minutes" + newHighScore, Toast.LENGTH_LONG).show();
-
-
+            
             Intent lobby = new Intent(getLevelContext(), lobby.class);
             lobby.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             lobby.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -213,7 +212,7 @@ public abstract class level extends AppCompatActivity {
         String name = userName.getText().toString().trim();
         long elapsedTime = SystemClock.elapsedRealtime() - currTime.getBase();
 
-        newHighScore = "\nAnd set a new High Score!!";
+        newHighScore = " and set a new High Score!!";
 
         if (!sharedPref.contains(name))
             hs = new HighScore(getLevel(), elapsedTime);
