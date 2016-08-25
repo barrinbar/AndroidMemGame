@@ -56,8 +56,8 @@ public class HighScore extends Object implements Comparable<HighScore> {
             return -1;
         // Same level compare time
         else if (new Date(time).before(new Date(other.getTime())))
-            return 1;
-        else
             return -1;
+        else
+            return 1;
     }
 }
