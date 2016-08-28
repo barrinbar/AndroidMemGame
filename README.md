@@ -18,7 +18,7 @@ Run on Android API 15 or higher (Android 4.0.3, 4.0.4	15 Ice Cream Sandwich MR1)
 
 ## Meta
 
-Barr Inbar – [@barrinbar](https://twitter.com/barrinbar)
+Barr Inbar – [@barrinbar](https://twitter.com/barrinbar) - ID 039173232
 
 Distributed under the MIT license. See [LICENSE.md](LICENSE.md) for more information.
 
